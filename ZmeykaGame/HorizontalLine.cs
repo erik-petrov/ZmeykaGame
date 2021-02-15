@@ -6,7 +6,6 @@ namespace ZmeykaGame
 {
     class HorizontalLine : Figure
     {
-        List<Point> pList;
 
         public HorizontalLine(int xleft, int xright, int y, char sym)
         {
@@ -17,14 +16,6 @@ namespace ZmeykaGame
                 pList.Add(p);
             }
 
-        }
-
-        public void Drow()
-        {
-            foreach(Point p in pList)
-            {
-                p.Draw();
-            }
         }
     }
 }

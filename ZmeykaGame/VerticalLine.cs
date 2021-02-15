@@ -4,10 +4,8 @@ using System.Text;
 
 namespace ZmeykaGame
 {
-    class VerticalLine
+    class VerticalLine : Figure
     {
-        List<Point> pList;
-
         public VerticalLine(int yUp, int yDown, int x, char sym)
         {
             pList = new List<Point>();
@@ -17,14 +15,6 @@ namespace ZmeykaGame
                 pList.Add(p);
             }
 
-        }
-
-        public void ddrow()
-        {
-            foreach(Point p in pList)
-            {
-                p.Draw();
-            }
         }
     }
 }

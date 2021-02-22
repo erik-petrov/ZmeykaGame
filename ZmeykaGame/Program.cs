@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-//крч исправь пж ничо не робит я не умею думать, ещё музыку найди
+//крч исправь пж ничо не робит я не умею думать
 namespace ZmeykaGame
 {
     class Program

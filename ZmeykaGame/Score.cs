@@ -7,11 +7,12 @@ namespace ZmeykaGame
     class Score
     {
         private int score;
+        public Program og = new Program();
 
-        public Score(int score)
+        public Score(int score,int mapX)
         {
             this.score = score;
-            Console.SetCursorPosition(69, 2);
+            Console.SetCursorPosition(Program.mapX - 8, 2);
             Console.WriteLine($"Score: {score}");
         }
         public void oneUp()
@@ -20,7 +21,7 @@ namespace ZmeykaGame
         }
         public void scUpdate()
         {
-            Console.SetCursorPosition(69, 2);
+            Console.SetCursorPosition(Program.mapX - 8, 2);
             Console.WriteLine($"Score: {score}");
         }
     }

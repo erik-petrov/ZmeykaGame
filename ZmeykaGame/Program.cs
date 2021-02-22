@@ -4,31 +4,40 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-//крч исправь пж ничо не робит я не умею думать
+
 namespace ZmeykaGame
 {
     class Program
     {
+        static int map;
+        static int speed;
+        public static int mapX;
+        public static int mapY;
         static void Main(string[] args)
         {
-            GameSetup game = new GameSetup();
-            int winH = diff.mapY;
-            int winW = diff.mapX;
-
-            Console.SetWindowSize(diff.mapX + 10, diff.mapY);
-
-            Walls walls = new Walls(diff.mapX, diff.mapY);
+            Console.WriteLine("Welcome to Snake: Another game\nPlease enter the speed of your snake");
+            speed = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Great, now enter the map size(3 for small, 2 for medium and 1 for large)");
+            map = Convert.ToInt32(Console.ReadLine());
+            Difficulty diff = new Difficulty(speed, map);
+            diff.diffSet(speed, map);
+            mapX = diff.mapX;
+            mapY = diff.mapY;
+            Console.Clear();
+            //да, это много кода, я не знаю как его раскидать по функциям не ломая луп
+            Walls walls = new Walls(mapX - 10, mapY);
             walls.Draw();
 
-            FoodCreator foodCreator = new FoodCreator(diff.mapX, diff.mapY, '0');
+            FoodCreator foodCreator = new FoodCreator(mapX - 10, mapY, '0');
             Point food = foodCreator.CreateFood();
             food.Draw();
 
-            Score score = new Score(0);
+            Score score = new Score(0, mapX);
 
             Point p = new Point(4, 5, '/');
             Snake snake = new Snake(p,4,Direction.RIGHT);
             snake.Draw();
+
             while (true)
             {
                 if(walls.IsHit(snake) || snake.IsHitTail())
@@ -53,28 +62,9 @@ namespace ZmeykaGame
                     snake.HandleKey(key.Key);
                 }
             }
-            GameOver();
+            GameOver over = new GameOver();
+            over.Ending();
             Console.ReadLine();
-
-            static void GameOver()
-            {
-                int xOff = 25;
-                int yOff = 8;
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.SetCursorPosition(xOff, yOff++);
-                WriteText("=====================================", xOff, yOff++);
-                WriteText("G A M E   O V E R", xOff + 10, yOff++);
-                yOff++;
-                WriteText("Cringe", xOff+14, yOff++);
-                WriteText("Oh no.", xOff +1 , yOff++);
-                WriteText("=====================================", xOff, yOff++);
-            }
-            
-            static void WriteText(string text, int xOff, int yOff)
-            {
-                Console.SetCursorPosition(xOff, yOff);
-                Console.WriteLine(text);
-            }
         }
     }
 }

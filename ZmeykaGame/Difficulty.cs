@@ -17,6 +17,10 @@ namespace ZmeykaGame
             this.speed = speed;
             this.mapSize = mapSize;
         }
+        public Difficulty()
+        {
+
+        }
         public void diffSet(int speed, int mapSize)
         {
             switch (speed)
@@ -34,18 +38,22 @@ namespace ZmeykaGame
             switch (mapSize)
             {
                 case 1:
-                    mapX = Console.LargestWindowWidth-10;
-                    mapY = Console.LargestWindowHeight-10;
+                    mapX = Console.LargestWindowWidth - 10;
+                    mapY = Console.LargestWindowHeight - 10;
+                    Console.SetWindowSize(mapX, mapY);
                     break;
                 case 2:
                     mapX = 80;
                     mapY = 34;
+                    Console.SetWindowSize(mapX + 8, mapY);
                     break;
                 case 3:
                     mapX = 40;
                     mapY = 17;
+                    Console.SetWindowSize(mapX + 3, mapY);
                     break;
             }
+            
         }
     }
 }

@@ -9,7 +9,7 @@ namespace ZmeykaGame
         private int score;
         public Program og = new Program();
 
-        public Score(int score,int mapX)
+        public Score(int score)
         {
             this.score = score;
             Console.SetCursorPosition(Program.mapX - 8, 2);

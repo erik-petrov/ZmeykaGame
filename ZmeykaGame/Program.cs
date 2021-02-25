@@ -32,7 +32,7 @@ namespace ZmeykaGame
             Point food = foodCreator.CreateFood();
             food.Draw();
 
-            Score score = new Score(0, mapX);
+            Score score = new Score(0);
 
             Point p = new Point(4, 5, '/');
             Snake snake = new Snake(p,4,Direction.RIGHT);
@@ -62,7 +62,7 @@ namespace ZmeykaGame
                     snake.HandleKey(key.Key);
                 }
             }
-            GameOver over = new GameOver();
+            GameOver over = new GameOver(score); //выводи скор, пж
             over.Ending();
             Console.ReadLine();
         }

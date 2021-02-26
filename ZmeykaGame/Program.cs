@@ -13,6 +13,7 @@ namespace ZmeykaGame
         static int speed;
         public static int mapX;
         public static int mapY;
+        static private int scoreX;
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to Snake: Another game\nPlease enter the speed of your snake");
@@ -42,6 +43,7 @@ namespace ZmeykaGame
             {
                 if(walls.IsHit(snake) || snake.IsHitTail())
                 {
+                    scoreX = score.score;
                     break;
                 }
                 if (snake.Eat(food))
@@ -49,10 +51,10 @@ namespace ZmeykaGame
                     food = foodCreator.CreateFood();
                     food.Draw();
                     score.oneUp();
-                    score.scUpdate();
                 }
                 else
                 {
+                    score.scUpdate();
                     snake.Move();
                 }
                 Thread.Sleep(diff.snSpeed);
@@ -62,7 +64,7 @@ namespace ZmeykaGame
                     snake.HandleKey(key.Key);
                 }
             }
-            GameOver over = new GameOver(score); //выводи скор, пж
+            GameOver over = new GameOver(scoreX);
             over.Ending();
             Console.ReadLine();
         }

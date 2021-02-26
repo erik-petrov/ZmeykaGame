@@ -8,6 +8,7 @@ namespace ZmeykaGame
     class Snake : Figure
     {
         Direction direction;
+        Score sc = new Score();
         public Snake(Point tail, int lenght, Direction _direction)
         {
             direction = _direction;
@@ -21,13 +22,20 @@ namespace ZmeykaGame
 
         internal void Move()
         {
-            Point tail = pList.First();
-            pList.Remove(tail);
-            Point head = GetNextPoint();
-            pList.Add(head);
-
-            tail.Clear();
-            head.Draw();
+            if (direction != Direction.PAUSE)
+            {
+                Point tail = pList.First();
+                pList.Remove(tail);
+                Point head = GetNextPoint();
+                pList.Add(head);
+                tail.Clear();
+                head.Draw();
+            }
+            else
+            {
+                sc.paused();
+                Console.SetCursorPosition(pList.Last().x, pList.Last().y);
+            }
         }
         public Point GetNextPoint()
         {
@@ -75,6 +83,10 @@ namespace ZmeykaGame
             else if (key == ConsoleKey.DownArrow)
             {
                 direction = Direction.DOWN;
+            }
+            else if (key == ConsoleKey.Spacebar)
+            {
+                direction = Direction.PAUSE;
             }
         }
 

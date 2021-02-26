@@ -14,6 +14,7 @@ namespace ZmeykaGame
 		public GameOver(int score)
 		{
 			Console.Clear();
+			Console.SetWindowSize(48, 8);
 			Console.OutputEncoding = Encoding.UTF8;
 			Console.WriteLine("Впишите свое имя: ");
 			name = Console.ReadLine();
@@ -25,8 +26,10 @@ namespace ZmeykaGame
 		public void Ending()
 		{
 			Console.Clear();
-			int xOff = Program.mapX/5;
-			int yOff = (Program.mapY - 10)/3;
+			//int xOff = Program.mapX/5;
+			//int yOff = (Program.mapY - 10)/3;
+			int xOff = 6;
+			int yOff = 12;
 			Console.ForegroundColor = ConsoleColor.Green;
 			Console.SetCursorPosition(xOff, yOff++);
 			WriteText("=====================================", xOff, yOff++);

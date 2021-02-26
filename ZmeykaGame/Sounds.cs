@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Media;
 
 namespace ZmeykaGame
 {
-    enum Direction
+    class Sounds
     {
-        LEFT,
-        RIGHT,
-        UP,
-        DOWN,
-        PAUSE
+        //тишина
     }
 }
